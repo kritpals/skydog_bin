@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# Author: Daniel Dickinson <daniel@powercloudsystems.com>
+#
+# Copyright 2012 PowerCloud Systems
+# All Rights Reserved
+#
+
+ccc_cloud_conf_eval() {
+	. /etc/functions.sh
+	include /lib/config
+	option() {
+		local varname="$1"; shift
+		local value="$*"
+		
+		export ${NO_EXPORT:+-n} "${varname}=$value"	
+	}
+	export UCI_CONFIG_DIR=${CLOUD_CONF_UCI_CONFIG_DIR}
+	uci_load cloudconf
+	unset UCI_CONFIG_DIR
+	export UCI_CONFIG_DIR
+}
+

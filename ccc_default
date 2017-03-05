@@ -1,0 +1,48 @@
+# WLANBASENAME is the prefix used for virtual APs (ie 'ath' in ath0, 'wlan' in wlan3, etc)
+config cloudconf cloudconf
+	option WLANBASENAME ath
+	option NUMRADIO 1
+	option NUM_VAPS 4
+
+# NETIF_x entries are a table mapping server-side network numbers to the
+# corresponding interface number used locally. For example, if NETIF_3=1 and
+# WLANBASENAME=wlan this means that the server-side network 3 is served by
+# $WLANBASENAME$NETIF_3, which expands to wlan1.
+
+	option NETIF_1 0
+	option NETIF_2 1
+	option NETIF2_1 2
+	option NETIF2_2 3
+
+	option NETIF_3 4
+	option NETIF_4 5
+	option NETIF2_3 6
+	option NETIF2_4 7
+
+# VAPRADIO_x entries indicate the name of the radio interface to be used
+# to provide/operate each interface
+	option VAPRADIO_0 radio0
+	option VAPRADIO_1 radio0
+	option VAPRADIO_2 radio0
+	option VAPRADIO_3 radio0
+
+	option VAPRADIO_2_0 radio1
+	option VAPRADIO_2_1 radio1
+	option VAPRADIO_2_2 radio1
+	option VAPRADIO_2_3 radio1
+
+	option FALLBACK_SERVER_IP 50.16.89.13
+	option FALLBACK_CA_IP 72.167.239.239
+
+	option AP_USEISOLATION_0 0
+	option AP_USEISOLATION_1 1
+	option AP_USEISOLATION_2 0
+	option AP_USEISOLATION_3 0
+
+	option AP_USEISOLATION_2_0 0
+	option AP_USEISOLATION_2_1 1
+	option AP_USEISOLATION_2_2 0
+	option AP_USEISOLATION_2_3 0
+
+	option RADIO_ENABLED_radio0 1
+

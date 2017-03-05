@@ -1,0 +1,202 @@
+#!/bin/sh
+
+# TXPOWER_2G: 2.4G Band Power Level
+# TXPOWER_5G: 5G Band Power Level
+# for each Band 
+#           _LEVEL_100: 100%  of max power level
+#           _LEVEL_50:  50%   of max power level
+#           _LEVEL_25:  25%   of max power level
+#           _LEVEL_125: 12.5% of max power level
+
+determine_txpower_levels() {
+	local regdom="$1"
+
+	case "$MODEL" in
+	ubdev01 | WAP223NC)
+		case "$regdom" in
+		US | CA)
+			export TXPOWER_2G_LEVEL_100="27"
+			export TXPOWER_2G_LEVEL_50="19"
+			export TXPOWER_2G_LEVEL_25="16"
+			export TXPOWER_2G_LEVEL_125="13"
+			export CCC_MAXTXPOWER="19"
+			;;
+		GB)
+			export TXPOWER_2G_LEVEL_100="20"
+			export TXPOWER_2G_LEVEL_50="17"
+			export TXPOWER_2G_LEVEL_25="14"
+			export TXPOWER_2G_LEVEL_125="11"
+			export CCC_MAXTXPOWER="17"
+			;;
+
+		*)
+			export TXPOWER_2G_LEVEL_100="20"
+			export TXPOWER_2G_LEVEL_50="17"
+			export TXPOWER_2G_LEVEL_25="14"
+			export TXPOWER_2G_LEVEL_125="11"
+			export CCC_MAXTXPOWER="17"
+			;;
+
+		esac
+		export TXPOWER_5G_LEVEL_100=
+		export TXPOWER_5G_LEVEL_50=
+		export TXPOWER_5G_LEVEL_25=
+		export TXPOWER_5G_LEVEL_125=
+		export CCC_MAXTXPOWER2=
+		;;
+
+	ubdevod|WAP224NOC)
+		case "$regdom" in
+		US | CA)
+			export TXPOWER_2G_LEVEL_100="18"
+			export TXPOWER_2G_LEVEL_50="15"
+			export TXPOWER_2G_LEVEL_25="12"
+			export TXPOWER_2G_LEVEL_125="9"
+			export CCC_MAXTXPOWER="18"
+			;;
+		GB)
+			export TXPOWER_2G_LEVEL_100="18"
+			export TXPOWER_2G_LEVEL_50="15"
+			export TXPOWER_2G_LEVEL_25="12"
+			export TXPOWER_2G_LEVEL_125="9"
+			export CCC_MAXTXPOWER="18"
+			;;
+		*)
+			export TXPOWER_2G_LEVEL_100="20"
+			export TXPOWER_2G_LEVEL_50="17"
+			export TXPOWER_2G_LEVEL_25="14"
+			export TXPOWER_2G_LEVEL_125="11"
+			export CCC_MAXTXPOWER="18"
+			;;
+		esac
+
+		export TXPOWER_5G_LEVEL_100=
+		export TXPOWER_5G_LEVEL_50=
+		export TXPOWER_5G_LEVEL_25=
+		export TXPOWER_5G_LEVEL_125=
+		export CCC_MAXTXPOWER2=
+		;;
+
+
+	dlrtdev01|AP825)
+		case "$regdom" in
+		US | CA)
+			export TXPOWER_2G_LEVEL_100="19"
+			export TXPOWER_2G_LEVEL_50="15"
+			export TXPOWER_2G_LEVEL_25="12"
+			export TXPOWER_2G_LEVEL_125="9"
+
+			export TXPOWER_5G_LEVEL_100="13"
+			export TXPOWER_5G_LEVEL_50="10"
+			export TXPOWER_5G_LEVEL_25="7"
+			export TXPOWER_5G_LEVEL_125="5"
+
+			export CCC_MAXTXPOWER="19"
+			export CCC_MAXTXPOWER2="13"
+			;;
+		GB)
+			;;
+
+		*)
+			;;
+		esac
+		;;
+
+	CAP324|WAP334NC|cr6000)
+		case "$regdom" in
+		US | CA)
+			export TXPOWER_2G_LEVEL_100="21"
+			export TXPOWER_2G_LEVEL_50="18"
+			export TXPOWER_2G_LEVEL_25="15"
+			export TXPOWER_2G_LEVEL_125="12"
+
+			export TXPOWER_5G_LEVEL_100="14"
+			export TXPOWER_5G_LEVEL_50="12"
+			export TXPOWER_5G_LEVEL_25="9"
+			export TXPOWER_5G_LEVEL_125="7"
+
+			export CCC_MAXTXPOWER="21"
+			export CCC_MAXTXPOWER2="14"
+			;;
+		GB)
+			export TXPOWER_2G_LEVEL_100="20"
+			export TXPOWER_2G_LEVEL_50="17"
+			export TXPOWER_2G_LEVEL_25="14"
+			export TXPOWER_2G_LEVEL_125="12"
+
+			export TXPOWER_5G_LEVEL_100="17"
+			export TXPOWER_5G_LEVEL_50="14"
+			export TXPOWER_5G_LEVEL_25="12"
+			export TXPOWER_5G_LEVEL_125="9"
+
+			export CCC_MAXTXPOWER="20"
+			export CCC_MAXTXPOWER2="17"
+			;;
+		*)
+			export TXPOWER_2G_LEVEL_100="20"
+			export TXPOWER_2G_LEVEL_50="17"
+			export TXPOWER_2G_LEVEL_25="14"
+			export TXPOWER_2G_LEVEL_125="12"
+
+			export TXPOWER_5G_LEVEL_100="17"
+			export TXPOWER_5G_LEVEL_50="14"
+			export TXPOWER_5G_LEVEL_25="12"
+			export TXPOWER_5G_LEVEL_125="9"
+
+			export CCC_MAXTXPOWER="20"
+			export CCC_MAXTXPOWER2="17"
+			;;
+		esac
+		;;
+	cr3000)
+		export TXPOWER_2G_LEVEL_100="11"
+		export TXPOWER_2G_LEVEL_50="8"
+		export TXPOWER_2G_LEVEL_25="5"
+		export TXPOWER_2G_LEVEL_125="4"
+
+		export TXPOWER_5G_LEVEL_100=
+		export TXPOWER_5G_LEVEL_50=
+		export TXPOWER_5G_LEVEL_25=
+		export TXPOWER_5G_LEVEL_125=
+
+		export CCC_MAXTXPOWER="11"
+		export CCC_MAXTXPOWER2=
+		;;
+
+	cr5000)
+		export TXPOWER_2G_LEVEL_100="19"
+		export TXPOWER_2G_LEVEL_50="16"
+		export TXPOWER_2G_LEVEL_25="13"
+		export TXPOWER_2G_LEVEL_125="10"
+
+		export TXPOWER_5G_LEVEL_100="11"
+		export TXPOWER_5G_LEVEL_50="8"
+		export TXPOWER_5G_LEVEL_25="6"
+		export TXPOWER_5G_LEVEL_125="4"
+
+		export CCC_MAXTXPOWER="19"
+		export CCC_MAXTXPOWER2="11"
+		;;
+	*)
+		;;
+	esac
+
+	if [ "$ccclient_debug" -ge 5 ]; then
+		echo "Model: $MODEL"
+		echo "  2.4G Band"
+		echo "    100%:  $TXPOWER_2G_LEVEL_100 dBm"
+		echo "    50%:   $TXPOWER_2G_LEVEL_50 dBm"
+		echo "    25%:   $TXPOWER_2G_LEVEL_25 dBm"
+		echo "    12.5%: $TXPOWER_2G_LEVEL_125 dBm"
+		echo "    MAX:   $CCC_MAXTXPOWER dBm"
+
+		if [ "TXPOWER_5G_LEVEL_100" != "" ]; then
+			echo "  5G Band"
+			echo "    100%:  $TXPOWER_5G_LEVEL_100 dBm"
+			echo "    50%:   $TXPOWER_5G_LEVEL_50 dBm"
+			echo "    25%:   $TXPOWER_5G_LEVEL_25 dBm"
+			echo "    12.5%: $TXPOWER_5G_LEVEL_125 dBm"
+			echo "    MAX:   $CCC_MAXTXPOWER2 dBm"
+		fi
+	fi
+}

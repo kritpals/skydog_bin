@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Author: Daniel Dickinson <daniel@powercloudsystems.com>
+# Copyright 2011 PowerCloud System, All Rights Reserved
+#
+
+[ "$(cat "$1" | md5sum)" = "$(cat "$2" | md5sum)" ]
+
